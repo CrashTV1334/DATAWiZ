@@ -7,6 +7,10 @@ body{
     padding: 0;
 }
 
+.heading-4{
+    font-weight: 700;
+}
+
 #mainNavbar {
     font-size: 1.5rem;
     font-weight: 100;
@@ -70,4 +74,8 @@ font-weight: 700;
 .dataset-button:hover{
 	background-image: linear-gradient(to bottom,#FFC371, rgba(255,60,77,0.35));
 	color: white;
+}
+
+.main-content{
+    margin-top: 100px;
 }

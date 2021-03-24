@@ -17,6 +17,10 @@ app.get("/covid", function (req, res) {
     res.send("COVID");
 });
 
+app.get("/about", function (req, res) {
+    res.render("about.ejs");
+});
+
 app.listen(port, function () {
     console.log("server started on port 3000");
 });
