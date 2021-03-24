@@ -1,0 +1,19 @@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script>
+    includeHTML();
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $("#mainNavbar");
+            var $brand = $('#mainNavbar .navbar-brand');
+            var $link = $('#mainNavbar .nav-link');
+            $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            $brand.toggleClass("brand-name-scrolled", $(this).scrollTop() > $nav.height());
+            $link.toggleClass("nav-link-scrolled", $(this).scrollTop() > $nav.height());
+        });
+    });
+</script>
+</body>
+
+</html>

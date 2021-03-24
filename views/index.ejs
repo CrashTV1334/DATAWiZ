@@ -1,0 +1,61 @@
+<%-include("partials/header.ejs")%>
+
+<div include-html="indexLogo.html"></div>
+
+<section class="container-fluid px-0">
+    <div class="row align-items-center content">
+        <div class="col-md-6 order-1 order-md-1">
+            <img src="assets/covid.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center order-2 order-md-2">
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-8 blurb mb-5 mb-md-0">
+                    <h2 class="data-head">
+                        COVID - 19 DATASET
+                    </h2>
+                    <!-- <img src="assets/search.png" alt="" class="d-none d-lg-inline"> -->
+                    <p class="lead">With a huge collection of realtime updating data, compare the
+                        data elements across various states of India and analyse the outliers using various models
+                    </p>
+                    <a href="/covid">
+                        <button class="dataset-button">
+                            Analyse <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-caret-right" viewBox="0 0 16 16">
+                                <path
+                                    d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                            </svg>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center content">
+        <div class="col-md-6 order-1 order-md-2">
+            <img src="assets/veteran.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center order-2 order-md-1">
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-8 blurb mb-5 mb-md-0">
+                    <h2 class="data-head">
+                        VETERAN HEALTH ADMINISTRATION DATASET
+                    </h2>
+                    <p class="lead">Compare the data elements classified into facilities with easy to understand
+                        visualisation using graphs and models. Analyse the outliers residing in the dataset with
+                        some concluding results.</p>
+                    <a href="/veteran">
+                        <button class="dataset-button">
+                            Analyse <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-caret-right" viewBox="0 0 16 16">
+                                <path
+                                    d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                            </svg>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%-include("partials/footer.ejs")%>

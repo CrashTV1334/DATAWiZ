@@ -1,0 +1,73 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#mainNavbar {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+  
+#mainNavbar .nav-link {
+color: rgba(255,60,77,1);
+}
+
+#mainNavbar .nav-link:hover {
+color: rgba(255,60,77,1);
+font-weight: 500;
+}
+
+#mainNavbar .nav-link-scrolled {
+color: white;
+}
+
+#mainNavbar .nav-link-scrolled:hover {
+color: white;
+font-weight: 500;
+}
+
+#mainNavbar .navbar-brand {
+background: linear-gradient(#FFC371, rgba(255,60,77,1));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+#mainNavbar .brand-name-scrolled{
+    background: linear-gradient(white, white);
+    -webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.navbar.scrolled {
+    /* color: white; */
+    background: linear-gradient(to left,#FFC371, rgba(255,60,77,1));
+}
+
+.data-head{
+    color: grey;
+}
+
+.dataset-button{
+    font-size: 1.5rem;
+	background: none;
+	border: 2px solid;
+  	border-image-slice: 1;
+  	border-width: 2px;
+	border-image-source:  linear-gradient(to bottom,#FFC371, rgba(255,60,77,0.35));
+	color: #FFC371;
+}
+
+.dataset-button:focus{
+	outline: none;
+}
+
+.dataset-button:hover{
+	background-image: linear-gradient(to bottom,#FFC371, rgba(255,60,77,0.35));
+	color: white;
+}
