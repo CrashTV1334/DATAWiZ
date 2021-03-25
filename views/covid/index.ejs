@@ -1,0 +1,68 @@
+<%-include("../partials/header.ejs")%>
+<div class="main-content">
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="head">State Analysis</div>
+                <div class="content">View detailed analysis of a paticular state of your choice ...</div>
+                <a href="/covid/analyse">
+                    <button class="dataset-button">
+                        Analyse <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-caret-right" viewBox="0 0 16 16">
+                            <path
+                                d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                        </svg>
+                    </button>
+                </a>
+            </div>
+            <div class="card">
+                <div class="head">State VS State</div>
+                <div class="content">Compare the data across two states and draw particular conclusions</div>
+                <a href="/covid/compare">
+                    <button class="dataset-button">
+                        Compare <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-caret-right" viewBox="0 0 16 16">
+                            <path
+                                d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                        </svg>
+                    </button>
+                </a>
+            </div>
+            <div class="card">
+                <div class="head">Find Outliers</div>
+                <div class="content">Find the outliers in the dataset visualised using various models</div>
+                <a href="/covid/outliers">
+                    <button class="dataset-button">
+                        Find Outliers <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-caret-right" viewBox="0 0 16 16">
+                            <path
+                                d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="container">
+                <div class="container" id="activeCasesGraph">
+                    <canvas id="ACLineChart"></canvas>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <div class="container" id="recoveredCasesGraph">
+                    <canvas id="RCLineChart"></canvas>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <div class="container" id="deceasedCasesGraph">
+                    <canvas id="DTHLineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="javascripts/covidAPI.js"></script>
+<%-include("../partials/footer.ejs")%>

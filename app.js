@@ -14,7 +14,19 @@ app.get("/veteran", function (req, res) {
 });
 
 app.get("/covid", function (req, res) {
-    res.send("COVID");
+    res.render("./covid/index.ejs");
+});
+
+app.get("/covid/analyse", function (req, res) {
+    res.render("./covid/analyseState.ejs");
+});
+
+app.get("/covid/compare", function (req, res) {
+    res.render("./covid/compareState.ejs");
+});
+
+app.get("/covid/outliers", function (req, res) {
+    res.render("./covid/outliers.ejs");
 });
 
 app.get("/about", function (req, res) {
