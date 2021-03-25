@@ -1,32 +1,50 @@
 <%-include("../partials/header.ejs")%>
 <div class="main-content">
-    <div class="row">
-        <div class="col-6">
-            <div class="container">
-                hello
-            </div>
+    <div class="container" id="drpdwnCont">
+        <select name="state" id="stateSel" class="mySelect">
+            <option value="" selected="selected">Total</option>
+        </select>
+    </div>
+    <div class="container" id="dataContainer">
+        <table>
+            <tr class="dataContent">
+                <td>Total Confirmed </td>
+                <td>: </td>
+                <td class="num" id="confirmCs"></td>
+            </tr>
+            <tr class="dataContent">
+                <td>Total Recoveries </td>
+                <td>: </td>
+                <td class="num" id="recoveries"></td>
+            </tr>
+            <tr class="dataContent">
+                <td>Total Deceased </td>
+                <td>: </td>
+                <td class="num" id="deaths"></td>
+            </tr>
+            <tr class="dataContent">
+                <td>Total Active </td>
+                <td>: </td>
+                <td class="num" id="activeCs"></td>
+            </tr>
+            <tr class="dataContent">
+                <td>Recovery Rate </td>
+                <td>: </td>
+                <td class="num" id="RecovRt"></td>
+            </tr>
+            <tr class="dataContent">
+                <td>Death Rate </td>
+                <td>: </td>
+                <td class="num" id="DeathRt"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="container" id="stateAnalyseContainer">
+        <div class="container" id="totalChart">
+            <canvas id="pieChart"></canvas>
         </div>
-        <!-- <div class="col-6">
-            <div class="container">
-                <div class="container" id="activeCasesGraph">
-                    <canvas id="ACLineChart"></canvas>
-                </div>
-            </div>
-            <br>
-            <div class="container">
-                <div class="container" id="recoveredCasesGraph">
-                    <canvas id="RCLineChart"></canvas>
-                </div>
-            </div>
-            <br>
-            <div class="container">
-                <div class="container" id="deceasedCasesGraph">
-                    <canvas id="DTHLineChart"></canvas>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
-<!-- <script src="javascripts/covidAPI_state.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="/javascripts/covidAPI_state.js"></script>
 <%-include("../partials/footer.ejs")%>

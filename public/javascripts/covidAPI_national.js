@@ -1,13 +1,3 @@
-var confirmCases = "# Total Cases";
-var recoveredCases = "# Recoveries";
-var deaths = "# Deaths";
-
-if ($(window).width() < 496) {
-    confirmCases = "# TC";
-    recoveredCases = "# RC";
-    deaths = "# Dths";
-}
-
 var xmlhttp = new XMLHttpRequest();
 var url = "https://api.covid19india.org/data.json";
 
@@ -38,7 +28,6 @@ function worldGraph(arr) {
     createGraph('ACLineChart', 'ACTIVE CASES', '#activeCasesGraph', scannedLabels, scannedAC);
     createGraph('RCLineChart', 'RECOVERED CASES', '#recoveredCasesGraph', scannedLabels, scannedRC);
     createGraph('DTHLineChart', 'DECEASED CASES', '#deceasedCasesGraph', scannedLabels, scannedDTH);
-    // myFunction(arr);
 }
 var countryMap = new Map();
 countryMap.set("Worldwide", -1);

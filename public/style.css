@@ -114,3 +114,43 @@ font-weight: 700;
     left: 70%;
     top: 60%;
 }
+
+/* for the drop-down and its content */
+.dropdown-container{
+    /* text-align: center; */
+}
+#drpdwnCont{
+    /* text-align: center; */
+}
+.mySelect{
+    /* background-color: #e84a5f70; */
+    /* border-radius: 5.5%; */
+    /* border-color: #DC3545; */
+    /* width: 117px; */
+    /* height: 36px; */
+    /* color:rgba(233, 236, 239, 0.753); */
+    outline: none;
+}
+
+#dataContainer{
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    max-width: 550px;
+    align-items: center;
+}
+
+.dataContent{
+    /* color: #e84a5f70; */
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    font-size: 33px;
+}
+
+/*  Canvas of state analysis doughnut chart*/
+#stateAnalyseContainer{
+    /* background-color: red; */
+    margin-bottom: 20px;
+    max-width: 600px;
+    max-height: 600px;
+}
