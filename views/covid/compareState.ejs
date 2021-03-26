@@ -1,1 +1,111 @@
-<h1>compare</h1>
+<%-include("../partials/header.ejs")%>
+<div class="main-content">
+    <div class="container" id="stateAnalyseContainer">
+        <div class="row">
+            <div class="col-6">
+                <div class="container" id="drpdwnCont1">
+                    <select name="state" id="stateSel1" class="mySelect">
+                        <option value="" selected="selected">Total</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container" id="drpdwnCont2">
+                    <select name="state" id="stateSel2" class="mySelect">
+                        <option value="" selected="selected">Total</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 col-center">
+            <table>
+                <tr class="dataContent">
+                    <td>Total Confirmed </td>
+                    <td>: </td>
+                    <td class="num" id="confirmCs1"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Total Recoveries </td>
+                    <td>: </td>
+                    <td class="num" id="recoveries1"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Total Deceased </td>
+                    <td>: </td>
+                    <td class="num" id="deaths1"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Total Active </td>
+                    <td>: </td>
+                    <td class="num" id="activeCs1"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Recovery Rate </td>
+                    <td>: </td>
+                    <td class="num" id="RecovRt1"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Death Rate </td>
+                    <td>: </td>
+                    <td class="num" id="DeathRt1"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-6 col-center">
+            <table>
+                <tr class="dataContent">
+                    <td>Total Confirmed </td>
+                    <td>: </td>
+                    <td class="num" id="confirmCs2"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Total Recoveries </td>
+                    <td>: </td>
+                    <td class="num" id="recoveries2"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Total Deceased </td>
+                    <td>: </td>
+                    <td class="num" id="deaths2"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Total Active </td>
+                    <td>: </td>
+                    <td class="num" id="activeCs2"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Recovery Rate </td>
+                    <td>: </td>
+                    <td class="num" id="RecovRt2"></td>
+                </tr>
+                <tr class="dataContent">
+                    <td>Death Rate </td>
+                    <td>: </td>
+                    <td class="num" id="DeathRt2"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="container" id="stateAnalyseContainer">
+        <div class="row">
+            <div class="col-6">
+                <div class="container" id="totalChart">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container" id="rateChart">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="/javascripts/covidAPI_compare.js"></script>
+<%-include("../partials/footer.ejs")%>
