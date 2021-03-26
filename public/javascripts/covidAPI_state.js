@@ -23,7 +23,7 @@ function myFunction(arr) {
     // createGraph('DTHLineChart', 'DECEASED CASES', '#deceasedCasesGraph', scannedLabels, scannedDTH);
     var stateSel = document.querySelector("#stateSel");
     stateSel.length = 1;
-    var stateArr = arr.statewise
+    var stateArr = arr.statewise;
 
     var label = ["Total Confirmed", "Total Recovered", "Total Deceased", "Total Active"]
     var label1 = ["Recovery Rate", "Death Rate"];

@@ -158,3 +158,12 @@ font-weight: 700;
 .col-center{
     padding-left: 9%;
 }
+
+.index-col-center{
+    padding-left: 25%;
+}
+
+#index-pieChart{
+    max-width: 600px;
+    max-height: 600px;    
+}

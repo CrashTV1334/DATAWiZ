@@ -10,7 +10,19 @@ app.get("/", function (req, res) {
 });
 
 app.get("/veteran", function (req, res) {
-    res.send("VETREE");
+    res.render("./veteran/index.ejs");
+});
+
+app.get("/veteran/analyse", function (req, res) {
+    res.render("./veteran/analyseFacility.ejs");
+});
+
+app.get("/veteran/compare", function (req, res) {
+    res.render("./veteran/compareFacility.ejs");
+});
+
+app.get("/veteran/outliers", function (req, res) {
+    res.render("./veteran/outliers.ejs");
 });
 
 app.get("/covid", function (req, res) {
