@@ -26,6 +26,7 @@ function myFunction(arr) {
     var stateArr = arr.statewise
 
     var label = ["Total Confirmed", "Total Recovered", "Total Deceased", "Total Active"]
+    var label1 = ["Recovery Rate", "Death Rate"];
     ttc = stateArr[0].confirmed;
     ttr = stateArr[0].recovered;
     ttd = stateArr[0].deaths;
@@ -45,6 +46,7 @@ function myFunction(arr) {
     DR.textContent = dr + " %";
     RR.textContent = rr + " %";
     createGraph([ttc, ttr, ttd, tta], label);
+    createBarGraph([rr, dr], label1);
 
     for (var i = 1; i < stateArr.length; i++) {
         stateSel.options[stateSel.options.length] = new Option(stateArr[i].state, stateArr[i].state);
@@ -78,7 +80,9 @@ function myFunction(arr) {
             DR.textContent = dr + " %";
             RR.textContent = rr + " %";
             var dat = [tc, tr, td, ta];
+            var dat1 = [rr, dr];
             createGraph(dat, label);
+            createBarGraph(dat1, label1);
 
         } catch (error) {
             try {
@@ -106,7 +110,7 @@ function myFunction(arr) {
                 RR.textContent = rr + " %";
                 var dat = [tc, tr, td, ta];
                 createGraph(dat, label);
-
+                createBarGraph(dat1, label1);
             } catch (error) {
                 ttc = 0;
                 ttr = 0;
@@ -128,6 +132,7 @@ function myFunction(arr) {
                 RR.textContent = rr + " %";
                 var dat = [tc, tr, td, ta];
                 createGraph(dat, label);
+                createBarGraph(dat1, label1);
             }
 
         }
@@ -161,6 +166,54 @@ function createGraph(dat, label) {
             legend: {
                 display: true,
             },
+        }
+
+    });
+
+}
+
+function createBarGraph(dat1, label1) {
+    var variable = '<canvas id="barChart">< /canvas>';
+    $('#barChart').remove();
+    $('#rateChart').append(variable);
+    var ctx = document.getElementById('barChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                data: dat1,
+                borderWidth: 1,
+                backgroundColor: [
+                    'green',
+                    'red',
+                ],
+            }],
+            labels: label1,
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Rates',
+            },
+            legend: {
+                display: false,
+            },
+
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontColor: "grey",
+                        fontSize: "18",
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "grey",
+                        fontSize: "18",
+                    }
+                }]
+            }
         }
 
     });

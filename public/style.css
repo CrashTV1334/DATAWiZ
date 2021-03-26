@@ -144,13 +144,14 @@ font-weight: 700;
     text-transform: uppercase;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-    font-size: 33px;
+    font-size: 27px;
 }
 
 /*  Canvas of state analysis doughnut chart*/
 #stateAnalyseContainer{
     /* background-color: red; */
     margin-bottom: 20px;
-    max-width: 600px;
-    max-height: 600px;
+}
+#barChart{
+    margin-top: 25%;
 }
