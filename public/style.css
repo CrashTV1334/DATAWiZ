@@ -117,7 +117,7 @@ font-weight: 700;
 
 /* for the drop-down and its content */
 .dropdown-container{
-    /* text-align: center; */
+    text-align: center;
 }
 #drpdwnCont{
     /* text-align: center; */
@@ -162,8 +162,30 @@ font-weight: 700;
 .index-col-center{
     padding-left: 25%;
 }
+.col-center-head{
+    padding-left: 12%;
+}
 
 #index-pieChart{
     max-width: 600px;
     max-height: 600px;    
+}
+
+#analyse-pieChart{
+    max-width: 500px;
+    max-height: 500px;    
+}
+
+.num{
+    text-align: left;
+    font-size: 1.2rem;
+    min-width: 500px;
+}
+
+.tag{
+    font-size: 1.4rem;
+}
+
+.tag-name{
+    min-width: 200px;
 }

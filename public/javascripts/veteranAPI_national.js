@@ -65,5 +65,4 @@ function createPieGraph(data, label, id1, id2) {
         }
 
     });
-
 }
