@@ -178,14 +178,14 @@ font-weight: 700;
 
 .num{
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     min-width: 500px;
 }
 
 .tag{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .tag-name{
-    min-width: 200px;
+    min-width: 270px;
 }
