@@ -1,1 +1,30 @@
-<h1>outliers</h1>
+<%-include("../partials/header.ejs")%>
+<div class="main-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="container col-center-head" id="dataContainer">
+                <p class="dataContent">Recovery Rate Outliers</p>
+            </div>
+            <div class="container">
+                <div class="container col-center" id="scoreOutliersGraph">
+                    <canvas id="bubbleChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="container col-center-head" id="dataContainer">
+                <p class="dataContent">Death Rate Outliers</p>
+            </div>
+            <div class="container">
+                <div class="container col-center" id="sampleOutliersGraph">
+                    <canvas id="BbubbleChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="/javascripts/covidAPI_outliers.js"></script>
+<%-include("../partials/footer.ejs")%>

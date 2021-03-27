@@ -12,7 +12,7 @@ xmlhttp.send();
 
 var scoreSum = 0;
 var sampleSum = 0;
-var den = 882;
+var den = 822;
 
 function worldGraph(arr) {
     var facilityArr = arr.data;
