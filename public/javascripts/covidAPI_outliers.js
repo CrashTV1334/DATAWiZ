@@ -11,27 +11,28 @@ xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
 var recoveryRate = [];
+var recoveryRate1 = [];
 var deathRate = [];
+var deathRate1 = [];
 var conditionID = [];
-var lowOutliers = [];
-var highOutliers = [];
+
 
 function myFunction(arr) {
     var stateArr = arr.statewise;
-
-    for (var i = 0; i < stateArr.length; i++) {
+    for (var i = 0; i < stateArr.length - 1; i++) {
         var tc = stateArr[i].confirmed;
         var tr = stateArr[i].recovered;
         var td = stateArr[i].deaths;
-        var ta = stateArr[i].active;
-        rr = ((tr / tc) * 100).toFixed(2);
-        dr = ((td / tc) * 100).toFixed(2);
-        recoveryRate.push(rr);
-        deathRate.push(dr);
+        rr = ((tr / tc) * 100);
+        dr = ((td / tc) * 100);
+        recoveryRate.push(parseInt(rr));
+        recoveryRate1.push(rr.toFixed(2));
+        deathRate.push(parseInt(dr));
+        deathRate1.push(dr.toFixed(2));
     }
 
     findRROutliers(recoveryRate);
-    // findSampleOutliers(sample);
+    findDROutliers(deathRate);
 }
 
 
@@ -39,79 +40,28 @@ function findRROutliers(recoveryRate) {
     var sortedRecoveryRate = recoveryRate.sort(function (a, b) {
         return a - b;
     });
-    var n = sortedRecoveryRate.length;
-    console.log(n);
-    // var median = (sortedScore[440] + sortedScore[441]) / 2;
-    // var l = median - ((1.5) * sortedScore[220]);
-    // var r = median + ((1.5) * sortedScore[661]);
-    // var data = [];
-    // for (var i = 0; i < sortedScore.length; i++) {
-    //     if (sortedScore[i] < l)
-    //         lowOutliers.push(sortedScore[i]);
-    //     if (sortedScore[i] > r)
-    //         highOutliers.push(sortedScore[i]);
-    //     if (sortedScore[i] <= r && sortedScore[i] >= l)
-    //         data.push(sortedScore[i]);
-    // }
-    // var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
-    // var lowOutliersData = [{}];
-    // var normalData = [{}];
-    // var highOutliersData = [{}];
-    // var xi = 1;
-    // var lowColor = [];
-    // var highColor = [];
-    // var normalColor = [];
-
-    // for (var i = 0; i < lowOutliers.length; i++) {
-    //     var temp = {
-    //         x: xi,
-    //         y: lowOutliers[i],
-    //         r: 5
-    //     }
-    //     xi = xi + 1;
-    //     lowOutliersData.push(temp);
-    //     lowColor.push('rgba(232,168,76,0.3)');
-    // }
-    // for (var i = 0; i < data.length; i++) {
-    //     var temp = {
-    //         x: xi,
-    //         y: data[i],
-    //         r: 5
-    //     }
-    //     xi = xi + 1;
-    //     normalData.push(temp);
-    //     normalColor.push('rgba(233,236,239,0.753)');
-    // }
-    // for (var i = 0; i < highOutliers.length; i++) {
-    //     var temp = {
-    //         x: xi,
-    //         y: highOutliers[i],
-    //         r: 5
-    //     }
-    //     xi = xi + 1;
-    //     highOutliersData.push(temp);
-    //     highColor.push('rgba(247,46,77,0.3)');
-    // }
-    // createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, 'bubbleChart', '#scoreOutliersGraph', lowColor, normalColor, highColor);
-}
-
-function findSampleOutliers(sample) {
-    var sortedSample = sample.sort(function (a, b) {
+    var sortedRecoveryRate1 = recoveryRate1.sort(function (a, b) {
         return a - b;
     });
-
-    var median = (sortedSample[440] + sortedSample[441]) / 2;
-    var l = median - ((1.5) * sortedSample[220]);
-    var r = median + ((1.5) * sortedSample[661]);
+    var median = (sortedRecoveryRate[18]);
+    var q1 = ((sortedRecoveryRate[3]) + (sortedRecoveryRate[4])) / 2;
+    var q2 = ((sortedRecoveryRate[12]) + (sortedRecoveryRate[13])) / 2;
+    var iqr = q2 - q1;
+    var l = parseInt(median - ((1.5) * iqr));
+    var r = parseInt(median + ((1.5) * iqr));
+    var lowOutliers = [];
+    var highOutliers = [];
     var data = [];
-    for (var i = 0; i < sortedSample.length; i++) {
-        if (sortedSample[i] < l)
-            lowOutliers.push(sortedSample[i]);
-        if (sortedSample[i] > r)
-            highOutliers.push(sortedSample[i]);
-        if (sortedSample[i] <= r && sortedSample[i] >= l)
-            data.push(sortedSample[i]);
+    for (var i = 0; i < 37; i++) {
+
+        if (parseInt(sortedRecoveryRate[i]) < l) {
+            lowOutliers.push(sortedRecoveryRate1[i]);
+        } else if (parseInt(sortedRecoveryRate[i]) > r) {
+            highOutliers.push(sortedRecoveryRate1[i]);
+        } else if (parseInt(sortedRecoveryRate[i]) >= l && parseInt(sortedRecoveryRate[i]) <= r)
+            data.push(sortedRecoveryRate1[i]);
     }
+
     var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
     var lowOutliersData = [{}];
     var normalData = [{}];
@@ -151,8 +101,84 @@ function findSampleOutliers(sample) {
         highOutliersData.push(temp);
         highColor.push('rgba(247,46,77,0.3)');
     }
-    createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, 'BbubbleChart', '#sampleOutliersGraph', lowColor, normalColor, highColor);
+    createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, 'bubbleChart', '#recoveryRateOutliersGraph', lowColor, normalColor, highColor);
 }
+
+function findDROutliers(deathRate) {
+    var sortedDeathRate = deathRate.sort(function (a, b) {
+        return a - b;
+    });
+    var sortedDeathRate1 = deathRate1.sort(function (a, b) {
+        return a - b;
+    });
+
+
+    var median = (sortedDeathRate[18]);
+    var q1 = ((sortedDeathRate[3]) + (sortedDeathRate[4])) / 2;
+    var q2 = ((sortedDeathRate[12]) + (sortedDeathRate[13])) / 2;
+    var iqr = q2 - q1;
+    var l = parseInt(median - ((1.5) * iqr));
+    var r = parseInt(median + ((1.5) * iqr));
+
+
+    var lowOutliers = [];
+    var highOutliers = [];
+    var data = [];
+    for (var i = 0; i < 37; i++) {
+
+        if (parseInt(sortedDeathRate[i]) < l) {
+            lowOutliers.push(sortedDeathRate1[i]);
+        } else if (parseInt(sortedDeathRate[i]) > r) {
+            highOutliers.push(sortedDeathRate1[i]);
+        } else if (parseInt(sortedDeathRate[i]) >= l && parseInt(sortedDeathRate[i]) <= r)
+            data.push(sortedDeathRate1[i]);
+    }
+    console.log(lowOutliers);
+    console.log(highOutliers);
+    var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
+    var lowOutliersData = [{}];
+    var normalData = [{}];
+    var highOutliersData = [{}];
+    var xi = 1;
+    var lowColor = [];
+    var highColor = [];
+    var normalColor = [];
+
+    for (var i = 0; i < lowOutliers.length; i++) {
+        var temp = {
+            x: xi,
+            y: lowOutliers[i],
+            r: 5
+        }
+        xi = xi + 1;
+        lowOutliersData.push(temp);
+        lowColor.push('rgba(232,168,76,0.3)');
+    }
+    for (var i = 0; i < data.length; i++) {
+        var temp = {
+            x: xi,
+            y: data[i],
+            r: 5
+        }
+        xi = xi + 1;
+        normalData.push(temp);
+        normalColor.push('rgba(233,236,239,0.753)');
+    }
+    for (var i = 0; i < highOutliers.length; i++) {
+        var temp = {
+            x: xi,
+            y: highOutliers[i],
+            r: 5
+        }
+        xi = xi + 1;
+        highOutliersData.push(temp);
+        highColor.push('rgba(247,46,77,0.3)');
+    }
+    highColor.push('rgba(247,46,77,0.3)');
+    createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, 'BbubbleChart', '#deathRateOutliersGraph', lowColor, normalColor, highColor);
+}
+
+
 
 
 function createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, id1, id2, lowColor, normalColor, highColor) {
