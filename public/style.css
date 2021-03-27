@@ -189,3 +189,11 @@ font-weight: 700;
 .tag-name{
     min-width: 270px;
 }
+
+#scoreHoriGraph{
+    height: 2000px;
+}
+
+#horiChart{
+    height: 2000px;
+}
