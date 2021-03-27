@@ -120,8 +120,48 @@ font-weight: 700;
     text-align: center;
 }
 #drpdwnCont{
+    padding-left: 25%;
     /* text-align: center; */
 }
+
+#drpdwnCont1{
+    padding-left: 20%;
+    /* text-align: center; */
+}
+
+#drpdwnCont2{
+    padding-left: 10%;
+    /* text-align: center; */
+}
+
+#drpdwnCont11{
+    margin-left: 0%;
+    /* max-width: 100px; */
+}
+
+#drpdwnCont11{
+    margin-left: 20%;
+    /* max-width: 100px; */
+}
+
+#stateSel1{
+    background-color: rgba(49,118,177,0.3);
+}
+
+#stateSel2{
+    background-color: rgba(232,168,76,0.3);
+}
+
+#facilitySel1{
+    max-width: 400px;
+    background-color: rgba(247,92,30,0.3);
+}
+
+#facilitySel2{
+    max-width: 400px;
+    background-color: rgba(232,150,15,0.3);
+}
+
 .mySelect{
     /* background-color: #e84a5f70; */
     /* border-radius: 5.5%; */
@@ -132,11 +172,35 @@ font-weight: 700;
     outline: none;
 }
 
+.col-pad-center{
+    padding-left: 20%;
+}
+
+.col-pad-center-right{
+    padding-left: 4%;
+}
+
 #dataContainer{
+    margin-top: 4rem;
+    /* margin-bottom: 5rem; */
+    max-width: 550px;
+    align-items: center;
+    margin-left: 25%;
+}
+
+#dataContainer-analyse{
     margin-top: 4rem;
     margin-bottom: 5rem;
     max-width: 550px;
     align-items: center;
+    margin-left: 35%;
+}
+
+#dataContainer-outliers{
+    margin-top: 4rem;
+    max-width: 550px;
+    align-items: center;
+    margin-left: 36%;
 }
 
 .dataContent{
@@ -145,6 +209,42 @@ font-weight: 700;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
     font-size: 27px;
+}
+
+.dataContent11{
+    /* color: #e84a5f70; */
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    font-size: 27px;
+    padding-left: 60%;
+    margin-left: 60%;
+}
+
+.dataContent22{
+    /* color: #e84a5f70; */
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    font-size: 27px;
+    padding-left: 20%;
+}
+
+.dataContent2{
+    /* color: #e84a5f70; */
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    font-size: 27px;
+    padding-left: 0%;
+}
+
+.dataContent-index{
+    margin-left: 10%;
+}
+
+.left-table{
+    /* font-size: 10px; */
 }
 
 /*  Canvas of state analysis doughnut chart*/
@@ -162,24 +262,59 @@ font-weight: 700;
 .index-col-center{
     padding-left: 25%;
 }
+
+.index-col-center1{
+    padding-left: 30%;
+}
+
 .col-center-head{
-    padding-left: 12%;
+    padding-left: 20%;
+}
+
+.col-center-left{
+    padding-left: 5%;
+}
+
+#cc1{
+    min-width: 300px;
+}
+
+#cc2{
+    min-width: 300px;
 }
 
 #index-pieChart{
-    max-width: 600px;
-    max-height: 600px;    
+    max-width: 500px;
+    max-height: 500px;    
 }
 
 #analyse-pieChart{
     max-width: 500px;
-    max-height: 500px;    
+    max-height: 500px;  
 }
 
 .num{
     text-align: left;
     font-size: 1.4rem;
     min-width: 500px;
+}
+
+.num-vet{
+    padding-left: 5%;
+    text-align: left;
+    font-size: 1rem;
+    min-width: 500px;
+}
+
+.green{
+    color: rgba(89,178,89,0.9);
+}
+.red{
+    color: rgba(210,80,77,0.9);
+}
+
+.grey{
+    color: rgb(130,138,145);
 }
 
 .tag{
@@ -190,10 +325,26 @@ font-weight: 700;
     min-width: 270px;
 }
 
+.only-name{
+    min-width: 400px;
+}
+
+.less-sz{
+    font-size: 15px;
+}
+
+.col-center-only{
+    padding-left: 5%;
+}
+
 #scoreHoriGraph{
-    height: 2000px;
+    height: 2300px;
 }
 
 #horiChart{
-    height: 2000px;
+    height: 2300px;
+}
+
+#HhoriChart{
+    height: 500px;
 }

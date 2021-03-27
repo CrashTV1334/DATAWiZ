@@ -133,8 +133,8 @@ function findDROutliers(deathRate) {
         } else if (parseInt(sortedDeathRate[i]) >= l && parseInt(sortedDeathRate[i]) <= r)
             data.push(sortedDeathRate1[i]);
     }
-    console.log(lowOutliers);
-    console.log(highOutliers);
+    // console.log(lowOutliers);
+    // console.log(highOutliers);
     var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
     var lowOutliersData = [{}];
     var normalData = [{}];

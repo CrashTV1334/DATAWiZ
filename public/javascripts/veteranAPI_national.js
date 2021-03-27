@@ -140,12 +140,12 @@ function createHorizontalBarGraph(data, label, id1, id2, xlabel, ylabel, title) 
                 data: data,
                 borderWidth: 1,
                 // backgroundColor: [
-                //     'transparent',
-                //     'rgba(11,89,4,0.3)',
-                // ],
-                // borderColor: [
-                //     'grey',
-                //     'grey'
+                //     'rgba(232,168,76,0.3)',
+                //     'rgba(232,168,76,0.3)',
+                //     'rgba(232,168,76,0.3)',
+                //     'rgba(232,168,76,0.3)',
+                //     'rgba(232,168,76,0.3)',
+                //     'rgba(232,168,76,0.3)'
                 // ]
             }],
             labels: label,

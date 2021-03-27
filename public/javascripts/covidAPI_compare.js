@@ -223,12 +223,12 @@ function createRadarGraph(data1, data2, Llabel, id1, id2, heading) {
             datasets: [{
                 data: data1,
                 backgroundColor: [
-                    'rgba(255,0,0,0.3)',
+                    'rgba(49,118,177,0.3)',
                 ],
             }, {
                 data: data2,
                 backgroundColor: [
-                    'rgba(0,0,255,0.3)',
+                    'rgba(232,168,76,0.6)',
                 ],
             }],
             labels: Llabel,
@@ -259,8 +259,8 @@ function createBarGraph(dat, id1, id2, state) {
                 data: dat,
                 borderWidth: 1,
                 backgroundColor: [
-                    'rgba(0,255,0,0.3)',
-                    'rgba(255,0,0,0.3)',
+                    'rgba(89,178,89,0.4)',
+                    'rgba(210,80,77,0.4)',
                 ],
             }],
             labels: ['Recovery Rate', 'Death Rate'],

@@ -2,8 +2,8 @@
 <div class="main-content">
     <div class="row">
         <div class="col-12">
-            <div class="container col-center-head" id="dataContainer">
-                <p class="dataContent">Recovery Rate Outliers</p>
+            <div class="container col-center-only" id="dataContainer-outliers">
+                <p class="dataContent only-name">Recovery Rate Outliers</p>
             </div>
             <div class="container">
                 <div class="container col-center" id="recoveryRateOutliersGraph">
@@ -12,10 +12,14 @@
             </div>
         </div>
     </div>
+
+    <br>
+    <br>
+    <br>
     <div class="row">
         <div class="col-12">
-            <div class="container col-center-head" id="dataContainer">
-                <p class="dataContent">Death Rate Outliers</p>
+            <div class="container col-center-only" id="dataContainer-outliers">
+                <p class="dataContent only-name">Death Rate Outliers</p>
             </div>
             <div class="container">
                 <div class="container col-center" id="deathRateOutliersGraph">
@@ -25,6 +29,7 @@
         </div>
     </div>
 </div>
+<br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 <script src="/javascripts/covidAPI_outliers.js"></script>
 <%-include("../partials/footer.ejs")%>
