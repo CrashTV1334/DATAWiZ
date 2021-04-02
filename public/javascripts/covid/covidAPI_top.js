@@ -66,8 +66,8 @@ function worldGraph(arr) {
         labelDeceased.push(sortedDeceased[i].name);
     }
 
-    createHorizontalBarGraph(dataActive, labelActive, "horiChart1", "#activeGraph", 'State Names', 'Active Case Count', 'Top 10 States - Active Cases');
-    createHorizontalBarGraph(dataDeceased, labelDeceased, "HhoriChart1", "#deceasedHoriGraph", 'State Names', 'Deceased Case Count', 'Top 10 States - Deceased Cases');
+    createHorizontalBarGraph(dataActive, labelActive, "horiChart1", "#activeGraph", 'Active Case Count', 'State Names', 'Top 10 States - Active Cases');
+    createHorizontalBarGraph(dataDeceased, labelDeceased, "HhoriChart1", "#deceasedHoriGraph", 'Deceased Case Count', 'State Names', 'Top 10 States - Deceased Cases');
 
 }
 
