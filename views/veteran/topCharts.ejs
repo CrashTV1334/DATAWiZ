@@ -1,0 +1,37 @@
+<%-include("../partials/header.ejs")%>
+<div class="main-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="container dropdown-container" id="drpdwnCont22">
+                <select name="facility" id="facilitySel" class="mySelect">
+                    <option value="" selected="selected">--Select--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <div class="container">
+                <div class="container " id="scoreGraph">
+                    <canvas id="horiChart2"></canvas>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="container">
+                <div class="container " id="sampleHoriGraph">
+                    <canvas id="HhoriChart2"></canvas>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="/javascripts/veteran/veteranAPI_top.js"></script>
+<%-include("../partials/footer.ejs")%>
