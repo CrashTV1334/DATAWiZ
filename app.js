@@ -25,6 +25,10 @@ app.get("/veteran/outliers", function (req, res) {
     res.render("./veteran/outliers.ejs");
 });
 
+app.get("/veteran/top", function (req, res) {
+    res.render("./veteran/topCharts.ejs");
+});
+
 app.get("/covid", function (req, res) {
     res.render("./covid/index.ejs");
 });
@@ -39,6 +43,10 @@ app.get("/covid/compare", function (req, res) {
 
 app.get("/covid/outliers", function (req, res) {
     res.render("./covid/outliers.ejs");
+});
+
+app.get("/covid/top", function (req, res) {
+    res.render("./covid/topCharts.ejs");
 });
 
 app.get("/about", function (req, res) {
