@@ -63,7 +63,7 @@ function myFunction(arr) {
     fd2 = parseFloat(dr2);
 
     if (fr1 > fr2) {
-        var diff = (fr2 - fr1).toFixed(2);
+        var diff = (fr1 - fr2).toFixed(2);
         $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
     } else {
         var diff = (fr2 - fr1).toFixed(2);
@@ -114,7 +114,7 @@ function myFunction(arr) {
             fd1 = parseFloat(dr1);
 
             if (fr1 > fr2) {
-                var diff = (fr2 - fr1).toFixed(2);
+                var diff = (fr1 - fr2).toFixed(2);
                 $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
             } else {
                 var diff = (fr2 - fr1).toFixed(2);
@@ -154,7 +154,7 @@ function myFunction(arr) {
                 fd1 = parseFloat(dr1);
 
                 if (fr1 > fr2) {
-                    var diff = (fr2 - fr1).toFixed(2);
+                    var diff = (fr1 - fr2).toFixed(2);
                     $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
@@ -187,7 +187,7 @@ function myFunction(arr) {
                 fd1 = parseFloat(dr1);
 
                 if (fr1 > fr2) {
-                    var diff = (fr2 - fr1).toFixed(2);
+                    var diff = (fr1 - fr2).toFixed(2);
                     $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
@@ -232,7 +232,7 @@ function myFunction(arr) {
                 fd2 = parseFloat(dr2);
 
                 if (fr1 > fr2) {
-                    var diff = (fr2 - fr1).toFixed(2);
+                    var diff = (fr1 - fr2).toFixed(2);
                     $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
@@ -272,7 +272,7 @@ function myFunction(arr) {
                     fd2 = parseFloat(dr2);
 
                     if (fr1 > fr2) {
-                        var diff = (fr2 - fr1).toFixed(2);
+                        var diff = (fr1 - fr2).toFixed(2);
                         $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
                     } else {
                         var diff = (fr2 - fr1).toFixed(2);
@@ -306,7 +306,7 @@ function myFunction(arr) {
                     fd2 = parseFloat(dr2);
 
                     if (fr1 > fr2) {
-                        var diff = (fr2 - fr1).toFixed(2);
+                        var diff = (fr1 - fr2).toFixed(2);
                         $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
                     } else {
                         var diff = (fr2 - fr1).toFixed(2);
