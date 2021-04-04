@@ -243,10 +243,6 @@ font-weight: 700;
     margin-left: 10%;
 }
 
-.left-table{
-    /* font-size: 10px; */
-}
-
 /*  Canvas of state analysis doughnut chart*/
 #stateAnalyseContainer{
     /* background-color: red; */
@@ -367,4 +363,9 @@ font-weight: 700;
 
 .col-center-head1{
     padding-left: 10%;
+}
+
+.inference-index{
+    text-align: center;
+    font-size: 1.7rem;
 }
