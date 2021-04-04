@@ -20,7 +20,6 @@ var stateMap = new Map();
 stateMap.set("Total", 0);
 
 function myFunction(arr) {
-    // createGraph('DTHLineChart', 'DECEASED CASES', '#deceasedCasesGraph', scannedLabels, scannedDTH);
     var stateSel = document.querySelector("#stateSel");
     stateSel.length = 1;
     var stateArr = arr.statewise;

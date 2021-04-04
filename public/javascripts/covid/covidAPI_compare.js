@@ -10,7 +10,7 @@ xmlhttp.onreadystatechange = function () {
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
-var ttc, ttr, ttd, tta, rr, dr;
+var ttc, ttr, ttd, tta, rr1, dr1, rr2, dr2, fr1, fr2, fd1, fd2;
 var dtc, dtr, dtd, state1, state2;
 var data1 = [];
 var data2 = [];
@@ -35,6 +35,8 @@ function myFunction(arr) {
     stateSel1.length = 1;
     var stateSel2 = document.querySelector("#stateSel2");
     stateSel2.length = 1;
+    state1 = "Total";
+    state2 = "Total"
 
     ttc = stateArr[0].confirmed;
     ttr = stateArr[0].recovered;
@@ -43,19 +45,40 @@ function myFunction(arr) {
     dtc = stateArr[0].deltaconfirmed;
     dtd = stateArr[0].deltadeaths;
     dtr = stateArr[0].deltarecovered;
-    rr = ((ttr / ttc) * 100).toFixed(2);
-    dr = ((ttd / ttc) * 100).toFixed(2);
+    rr1 = ((ttr / ttc) * 100).toFixed(2);
+    dr1 = ((ttd / ttc) * 100).toFixed(2);
+    rr2 = ((ttr / ttc) * 100).toFixed(2);
+    dr2 = ((ttd / ttc) * 100).toFixed(2);
 
     data1 = [ttc, ttr, ttd, tta];
     data2 = [ttc, ttr, ttd, tta];
     data11 = [dtc, dtr, dtd];
     data22 = [dtc, dtr, dtd];
-    data111 = [rr, dr];
-    data222 = [rr, dr];
+    data111 = [rr1, dr1];
+    data222 = [rr2, dr2];
 
+    fr1 = parseFloat(rr1);
+    fd1 = parseFloat(dr1);
+    fr2 = parseFloat(rr2);
+    fd2 = parseFloat(dr2);
 
-    setParameters(ttc, ttr, ttd, tta, rr, dr, '1', 'Total', 'Total');
-    setParameters(ttc, ttr, ttd, tta, rr, dr, '2', 'Total', 'Total');
+    if (fr1 > fr2) {
+        var diff = (fr2 - fr1).toFixed(2);
+        $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+    } else {
+        var diff = (fr2 - fr1).toFixed(2);
+        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state2);
+    }
+    if (fd1 > fd2) {
+        var diff = (fd1 - fd2).toFixed(2);
+        $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+    } else {
+        var diff = (fd2 - fd1).toFixed(2);
+        $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+    }
+
+    setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', 'Total', 'Total');
+    setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', 'Total', 'Total');
     for (var i = 1; i < stateArr.length; i++) {
         stateSel1.options[stateSel1.options.length] = new Option(stateArr[i].state, stateArr[i].state);
         stateMap1.set(stateArr[i].state, i);
@@ -74,7 +97,6 @@ function myFunction(arr) {
             var td = stateArr[indx].deaths;
             var ta = stateArr[indx].active;
             state1 = stateArr[indx].state;
-            var state = stateArr[indx].state;
             ttc = tc;
             ttr = tr;
             ttd = td;
@@ -82,12 +104,31 @@ function myFunction(arr) {
             dtc = stateArr[indx].deltaconfirmed;
             dtd = stateArr[indx].deltadeaths;
             dtr = stateArr[indx].deltarecovered;
-            rr = ((ttr / ttc) * 100).toFixed(2);
-            dr = ((ttd / ttc) * 100).toFixed(2);
+            rr1 = ((ttr / ttc) * 100).toFixed(2);
+            dr1 = ((ttd / ttc) * 100).toFixed(2);
             data1 = [ttc, ttr, ttd, tta];
             data11 = [dtc, dtr, dtd];
-            data111 = [rr, dr];
-            setParameters(ttc, ttr, ttd, tta, rr, dr, '1', state1, state2);
+            data111 = [rr1, dr1];
+
+            fr1 = parseFloat(rr1);
+            fd1 = parseFloat(dr1);
+
+            if (fr1 > fr2) {
+                var diff = (fr2 - fr1).toFixed(2);
+                $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+            } else {
+                var diff = (fr2 - fr1).toFixed(2);
+                $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state2);
+            }
+            if (fd1 > fd2) {
+                var diff = (fd1 - fd2).toFixed(2);
+                $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+            } else {
+                var diff = (fd2 - fd1).toFixed(2);
+                $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+            }
+
+            setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', state1, state2);
 
         } catch (error) {
             try {
@@ -103,12 +144,31 @@ function myFunction(arr) {
                 dtc = stateArr[0].deltaconfirmed;
                 dtd = stateArr[0].deltadeaths;
                 dtr = stateArr[0].deltarecovered;
-                rr = ((ttr / ttc) * 100).toFixed(2);
-                dr = ((ttd / ttc) * 100).toFixed(2);
+                rr1 = ((ttr / ttc) * 100).toFixed(2);
+                dr1 = ((ttd / ttc) * 100).toFixed(2);
                 data1 = [ttc, ttr, ttd, tta];
                 data11 = [dtc, dtr, dtd];
-                data111 = [rr, dr];
-                setParameters(ttc, ttr, ttd, tta, rr, dr, '1', state1, state2);
+                data111 = [rr1, dr1];
+
+                fr1 = parseFloat(rr1);
+                fd1 = parseFloat(dr1);
+
+                if (fr1 > fr2) {
+                    var diff = (fr2 - fr1).toFixed(2);
+                    $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                } else {
+                    var diff = (fr2 - fr1).toFixed(2);
+                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state2);
+                }
+                if (fd1 > fd2) {
+                    var diff = (fd1 - fd2).toFixed(2);
+                    $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                } else {
+                    var diff = (fd2 - fd1).toFixed(2);
+                    $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                }
+
+                setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', state1, state2);
             } catch (error) {
                 ttc = 0;
                 ttr = 0;
@@ -117,12 +177,31 @@ function myFunction(arr) {
                 dtc = 0;
                 dtd = 0;
                 dtr = 0;
-                rr = ((ttr / ttc) * 100).toFixed(2);
-                dr = ((ttd / ttc) * 100).toFixed(2);
+                rr1 = ((ttr / ttc) * 100).toFixed(2);
+                dr1 = ((ttd / ttc) * 100).toFixed(2);
                 data1 = [ttc, ttr, ttd, tta];
                 data11 = [dtc, dtr, dtd];
-                data111 = [rr, dr];
-                setParameters(ttc, ttr, ttd, tta, rr, dr, '1', 'state', 'state');
+                data111 = [rr1, dr1];
+
+                fr1 = parseFloat(rr1);
+                fd1 = parseFloat(dr1);
+
+                if (fr1 > fr2) {
+                    var diff = (fr2 - fr1).toFixed(2);
+                    $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                } else {
+                    var diff = (fr2 - fr1).toFixed(2);
+                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                }
+                if (fd1 > fd2) {
+                    var diff = (fd1 - fd2).toFixed(2);
+                    $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                } else {
+                    var diff = (fd2 - fd1).toFixed(2);
+                    $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                }
+
+                setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', 'state', 'state');
             }
 
         }
@@ -143,12 +222,31 @@ function myFunction(arr) {
                 dtc = stateArr[indx].deltaconfirmed;
                 dtd = stateArr[indx].deltadeaths;
                 dtr = stateArr[indx].deltarecovered;
-                rr = ((ttr / ttc) * 100).toFixed(2);
-                dr = ((ttd / ttc) * 100).toFixed(2);
+                rr2 = ((ttr / ttc) * 100).toFixed(2);
+                dr2 = ((ttd / ttc) * 100).toFixed(2);
                 data2 = [ttc, ttr, ttd, tta];
                 data22 = [dtc, dtr, dtd];
-                data222 = [rr, dr];
-                setParameters(ttc, ttr, ttd, tta, rr, dr, '2', state1, state2);
+                data222 = [rr2, dr2];
+
+                fr2 = parseFloat(rr2);
+                fd2 = parseFloat(dr2);
+
+                if (fr1 > fr2) {
+                    var diff = (fr2 - fr1).toFixed(2);
+                    $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                } else {
+                    var diff = (fr2 - fr1).toFixed(2);
+                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                }
+                if (fd1 > fd2) {
+                    var diff = (fd1 - fd2).toFixed(2);
+                    $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                } else {
+                    var diff = (fd2 - fd1).toFixed(2);
+                    $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                }
+
+                setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', state1, state2);
 
             } catch (error) {
                 try {
@@ -164,12 +262,31 @@ function myFunction(arr) {
                     dtc = stateArr[0].deltaconfirmed;
                     dtd = stateArr[0].deltadeaths;
                     dtr = stateArr[0].deltarecovered;
-                    rr = ((ttr / ttc) * 100).toFixed(2);
-                    dr = ((ttd / ttc) * 100).toFixed(2);
+                    rr2 = ((ttr / ttc) * 100).toFixed(2);
+                    dr2 = ((ttd / ttc) * 100).toFixed(2);
                     data2 = [ttc, ttr, ttd, tta];
                     data22 = [dtc, dtr, dtd];
-                    data222 = [rr, dr];
-                    setParameters(ttc, ttr, ttd, tta, rr, dr, '2', state1, state2);
+                    data222 = [rr2, dr2];
+
+                    fr2 = parseFloat(rr2);
+                    fd2 = parseFloat(dr2);
+
+                    if (fr1 > fr2) {
+                        var diff = (fr2 - fr1).toFixed(2);
+                        $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                    } else {
+                        var diff = (fr2 - fr1).toFixed(2);
+                        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                    }
+                    if (fd1 > fd2) {
+                        var diff = (fd1 - fd2).toFixed(2);
+                        $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                    } else {
+                        var diff = (fd2 - fd1).toFixed(2);
+                        $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                    }
+
+                    setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', state1, state2);
                 } catch (error) {
                     ttc = 0;
                     ttr = 0;
@@ -179,12 +296,31 @@ function myFunction(arr) {
                     dtd = 0;
                     dtr = 0;
                     var state = stateArr[0].state;
-                    rr = ((ttr / ttc) * 100).toFixed(2);
-                    dr = ((ttd / ttc) * 100).toFixed(2);
+                    rr2 = ((ttr / ttc) * 100).toFixed(2);
+                    dr2 = ((ttd / ttc) * 100).toFixed(2);
                     data2 = [ttc, ttr, ttd, tta];
                     data22 = [dtc, dtr, dtd];
-                    data222 = [rr, dr];
-                    setParameters(ttc, ttr, ttd, tta, rr, dr, '2', 'state', 'state');
+                    data222 = [rr2, dr2];
+
+                    fr2 = parseFloat(rr2);
+                    fd2 = parseFloat(dr2);
+
+                    if (fr1 > fr2) {
+                        var diff = (fr2 - fr1).toFixed(2);
+                        $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                    } else {
+                        var diff = (fr2 - fr1).toFixed(2);
+                        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                    }
+                    if (fd1 > fd2) {
+                        var diff = (fd1 - fd2).toFixed(2);
+                        $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                    } else {
+                        var diff = (fd2 - fd1).toFixed(2);
+                        $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                    }
+
+                    setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', 'state', 'state');
                 }
 
             }
@@ -198,14 +334,10 @@ function setParameters(ttc, ttr, ttd, tta, rr, dr, offset, state1, state2) {
     var RC = document.querySelector("#recoveries" + offset);
     var DC = document.querySelector("#deaths" + offset);
     var AC = document.querySelector("#activeCs" + offset);
-    var DR = document.querySelector("#DeathRt" + offset);
-    var RR = document.querySelector("#RecovRt" + offset);
     TC.textContent = ttc;
     RC.textContent = ttr;
     DC.textContent = ttd;
     AC.textContent = tta;
-    DR.textContent = dr + " %";
-    RR.textContent = rr + " %";
     createRadarGraph(data1, data2, label, 'radarChart', '#totalChart', 'Overall');
     createRadarGraph(data11, data22, label1, 'RradarChart', '#deltaChart', 'Delta');
     createBarGraph(data111, 'bbarChart', '#rates1', state1);
