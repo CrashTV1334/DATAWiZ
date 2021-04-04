@@ -14,9 +14,6 @@ xmlhttp.send();
 // var sam = facilityArr[indx][20]; //samples 
 // var sc = facilityArr[indx][19]; //score
 
-var scoreData = [];
-var sampleData = [];
-
 
 var facilityMap = new Map();
 facilityMap.set("--Select--", -1);
@@ -61,7 +58,10 @@ function worldGraph(arr) {
 }
 
 function calculate(facilityArr, st) {
-    // console.log(st);
+
+    var scoreData = [];
+    var sampleData = [];
+
     for (var i = 1; i < facilityArr.length; i++) {
         if (facilityArr[i][12] == st) {
             var nm = facilityArr[i][9] + " - " + facilityArr[i][14] + "(" + facilityArr[i][17] + ")";
@@ -86,21 +86,6 @@ function calculate(facilityArr, st) {
         }
     }
 
-    // console.log(scoreData);
-    // console.log(sampleData);
-
-    // for (var i = 1; i < facilityArr.length - 1; i++) {
-    //     var temp1 = {
-    //         name: facilityArr[i].facility,
-    //         score: parseInt(facilityArr[i].active)
-    //     }
-    //     var temp2 = {
-    //         name: facilityArr[i].facility,
-    //         sample: parseInt(facilityArr[i].deaths)
-    //     }
-    //     dataAct.push(temp1);
-    //     dataDec.push(temp2);
-    // }
     var dataScr = [];
     var labelScr = [];
     var dataSam = [];
@@ -116,8 +101,6 @@ function calculate(facilityArr, st) {
         dataScr.push(sortedScr[i].score);
         labelScr.push(sortedScr[i].name);
     }
-    // console.log(dataScr);
-    // console.log(labelScr);
 
     var sortedSam = sampleData.sort(function (a, b) {
         if (a.sample <= b.sample) return 1;
@@ -129,8 +112,6 @@ function calculate(facilityArr, st) {
         dataSam.push(sortedSam[i].sample);
         labelSam.push(sortedSam[i].name);
     }
-    // console.log(dataSam);
-    // console.log(labelSam);
 
     createHorizontalBarGraph(dataScr, labelScr, "horiChart2", "#scoreGraph", 'Facility - Score', 'Facility Name', 'Top Facilities - Scores');
     createHorizontalBarGraph(dataSam, labelSam, "HhoriChart2", "#sampleHoriGraph", 'Facility - Samples', 'Facility Name', 'Top Facilities - Samples');
@@ -138,6 +119,7 @@ function calculate(facilityArr, st) {
 
 function createHorizontalBarGraph(data, label, id1, id2, xlabel, ylabel, title) {
     var variable = '<canvas id="' + id1 + '"> < /canvas>';
+    console.log(data.length);
     $('#' + id1).remove();
     $(id2).append(variable);
     var ctx = document.getElementById(id1).getContext('2d');
