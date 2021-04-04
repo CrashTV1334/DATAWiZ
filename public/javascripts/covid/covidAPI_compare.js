@@ -67,7 +67,7 @@ function myFunction(arr) {
         $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
     } else {
         var diff = (fr2 - fr1).toFixed(2);
-        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state2);
+        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
     }
     if (fd1 > fd2) {
         var diff = (fd1 - fd2).toFixed(2);
@@ -118,7 +118,7 @@ function myFunction(arr) {
                 $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
             } else {
                 var diff = (fr2 - fr1).toFixed(2);
-                $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state2);
+                $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
             }
             if (fd1 > fd2) {
                 var diff = (fd1 - fd2).toFixed(2);
@@ -158,7 +158,7 @@ function myFunction(arr) {
                     $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
-                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state2);
+                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
                 }
                 if (fd1 > fd2) {
                     var diff = (fd1 - fd2).toFixed(2);

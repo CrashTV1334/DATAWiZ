@@ -41,6 +41,7 @@ function myFunction(arr) {
     }
     facilitySel1.onchange = function () {
         var selected_facility = document.querySelector("#facilitySel1").value;
+        facility1 = selected_facility;
         var indx = facilityMap1.get(selected_facility);
         label[0] = selected_facility;
         try {
@@ -58,6 +59,23 @@ function myFunction(arr) {
             measure = mes;
             samples1 = sam;
             score1 = sc;
+            sample1 = sam;
+
+            if (sample1 > sample2) {
+                var diff = sample1 - sample2;
+                $("#sampleInference").text(facility1 + " has " + diff + " more samples than " + facility2);
+            } else {
+                var diff = sample2 - sample1;
+                $("#sampleInference").text(facility2 + " has " + diff + " more samples than " + facility1);
+            }
+            if (score1 > score2) {
+                var diff = score1 - score2;
+                $("#scoreInference").text(facility1 + " is " + diff + "% better rated than " + facility2);
+            } else {
+                var diff = score2 - score1;
+                $("#scoreInference").text(facility2 + " is " + diff + "% better rated than " + facility1);
+            }
+
             setParameters('1');
 
         } catch (error) {
@@ -76,6 +94,22 @@ function myFunction(arr) {
                 measure = mes;
                 samples1 = sam;
                 score1 = sc;
+                sample1 = sam;
+
+                if (sample1 > sample2) {
+                    var diff = sample1 - sample2;
+                    $("#sampleInference").text(facility1 + " has " + diff + " more samples than " + facility2);
+                } else {
+                    var diff = sample2 - sample1;
+                    $("#sampleInference").text(facility2 + " has " + diff + " more samples than " + facility1);
+                }
+                if (score1 > score2) {
+                    var diff = score1 - score2;
+                    $("#scoreInference").text(facility1 + " is " + diff + "% better rated than " + facility2);
+                } else {
+                    var diff = score2 - score1;
+                    $("#scoreInference").text(facility2 + " is " + diff + "% better rated than " + facility1);
+                }
 
                 setParameters('1');
             } catch (error) {
@@ -86,6 +120,22 @@ function myFunction(arr) {
                 measure = 0;
                 samples1 = 0;
                 score1 = 0;
+                sample1 = 0;
+
+                if (sample1 > sample2) {
+                    var diff = sample1 - sample2;
+                    $("#sampleInference").text(facility1 + " has " + diff + " more samples than " + facility2);
+                } else {
+                    var diff = sample2 - sample1;
+                    $("#sampleInference").text(facility2 + " has " + diff + " more samples than " + facility1);
+                }
+                if (score1 > score2) {
+                    var diff = score1 - score2;
+                    $("#scoreInference").text(facility1 + " is " + diff + "% better rated than " + facility2);
+                } else {
+                    var diff = score2 - score1;
+                    $("#scoreInference").text(facility2 + " is " + diff + "% better rated than " + facility1);
+                }
 
                 setParameters('1');
             }
@@ -93,6 +143,7 @@ function myFunction(arr) {
         }
         facilitySel2.onchange = function () {
             var selected_facility = document.querySelector("#facilitySel2").value;
+            facility2 = selected_facility;
             var indx = facilityMap2.get(selected_facility);
             label[1] = selected_facility;
             try {
@@ -110,6 +161,22 @@ function myFunction(arr) {
                 measure = mes;
                 samples2 = sam;
                 score2 = sc;
+                sample2 = sam;
+
+                if (sample1 > sample2) {
+                    var diff = sample1 - sample2;
+                    $("#sampleInference").text(facility1 + " has " + diff + " more samples than " + facility2);
+                } else {
+                    var diff = sample2 - sample1;
+                    $("#sampleInference").text(facility2 + " has " + diff + " more samples than " + facility1);
+                }
+                if (score1 > score2) {
+                    var diff = score1 - score2;
+                    $("#scoreInference").text(facility1 + " is " + diff + "% better rated than " + facility2);
+                } else {
+                    var diff = score2 - score1;
+                    $("#scoreInference").text(facility2 + " is " + diff + "% better rated than " + facility1);
+                }
 
                 setParameters('2');
 
@@ -129,6 +196,22 @@ function myFunction(arr) {
                     measure = mes;
                     samples2 = sam;
                     score2 = sc;
+                    sample2 = sam;
+
+                    if (sample1 > sample2) {
+                        var diff = sample1 - sample2;
+                        $("#sampleInference").text(facility1 + " has " + diff + " more samples than " + facility2);
+                    } else {
+                        var diff = sample2 - sample1;
+                        $("#sampleInference").text(facility2 + " has " + diff + " more samples than " + facility1);
+                    }
+                    if (score1 > score2) {
+                        var diff = score1 - score2;
+                        $("#scoreInference").text(facility1 + " is " + diff + "% better rated than " + facility2);
+                    } else {
+                        var diff = score2 - score1;
+                        $("#scoreInference").text(facility2 + " is " + diff + "% better rated than " + facility1);
+                    }
 
                     setParameters('2');
                 } catch (error) {
@@ -139,6 +222,22 @@ function myFunction(arr) {
                     measure = 0;
                     samples2 = 0;
                     score2 = 0;
+                    sample2 = 0;
+
+                    if (sample1 > sample2) {
+                        var diff = sample1 - sample2;
+                        $("#sampleInference").text(facility1 + " has " + diff + " more samples than " + facility2);
+                    } else {
+                        var diff = sample2 - sample1;
+                        $("#sampleInference").text(facility2 + " has " + diff + " more samples than " + facility1);
+                    }
+                    if (score1 > score2) {
+                        var diff = score1 - score2;
+                        $("#scoreInference").text(facility1 + " is " + diff + "% better rated than " + facility2);
+                    } else {
+                        var diff = score2 - score1;
+                        $("#scoreInference").text(facility2 + " is " + diff + "% better rated than " + facility1);
+                    }
 
                     setParameters('2');
                 }
@@ -155,17 +254,14 @@ function setParameters(offset) {
     DC = document.querySelector("#city" + offset);
     AC = document.querySelector("#condition" + offset);
     DR = document.querySelector("#measure" + offset);
-    SM = document.querySelector("#samples" + offset);
+
     TC.textContent = country;
     RC.textContent = state;
     DC.textContent = city;
     AC.textContent = condition;
     DR.textContent = measure;
-    if (offset == '1')
-        SM.textContent = samples1;
-    else
-        SM.textContent = samples2;
-    data1 = [samples1, samples2];
+
+    data1 = [sample1, sample2];
     data2 = [score1, score2];
     createBarGraph(data1, 'barChart1', '#samples', 'Samples');
     createBarGraph(data2, 'barChart2', '#score', 'Score');
