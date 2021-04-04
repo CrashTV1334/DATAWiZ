@@ -79,8 +79,6 @@ function worldGraph(arr) {
     label1.reverse();
     createHorizontalBarGraph(data1, label1, "horiChart", "#scoreHoriGraph", 'value', 'score', 'Score Analysis');
     createHorizontalBarGraph(data2, label2, "HhoriChart", "#conditionGraph", 'samples', 'condition', 'Condition - Sample Analysis');
-    console.log(scoreMap);
-    console.log(conditionMap);
 }
 
 function populateMaps(score, sample, facilityArr) {
@@ -121,7 +119,11 @@ function createPieGraph(data, label, id1, id2) {
         },
         options: {
             legend: {
+                display: false,
+            },
+            title: {
                 display: true,
+                text: 'Average Score'
             },
         }
 
