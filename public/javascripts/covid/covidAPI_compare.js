@@ -10,6 +10,7 @@ xmlhttp.onreadystatechange = function () {
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
+var upArr = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>';
 var ttc, ttr, ttd, tta, rr1, dr1, rr2, dr2, fr1, fr2, fd1, fd2;
 var dtc, dtr, dtd, state1, state2;
 var data1 = [];
@@ -64,17 +65,17 @@ function myFunction(arr) {
 
     if (fr1 > fr2) {
         var diff = (fr1 - fr2).toFixed(2);
-        $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+        $("#recoveryInference").html(state1 + " has " + diff + "% better recovery rate than " + state2);
     } else {
         var diff = (fr2 - fr1).toFixed(2);
-        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+        $("#recoveryInference").html(state2 + " has " + diff + "% better recovery rate than " + state1);
     }
     if (fd1 > fd2) {
         var diff = (fd1 - fd2).toFixed(2);
-        $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+        $("#deathInference").html(state2 + " has " + diff + "% lesser death rate than " + state1);
     } else {
         var diff = (fd2 - fd1).toFixed(2);
-        $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+        $("#deathInference").html(state1 + " has " + diff + "% lesser death rate than " + state2);
     }
 
     setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', 'Total', 'Total');
@@ -115,17 +116,25 @@ function myFunction(arr) {
 
             if (fr1 > fr2) {
                 var diff = (fr1 - fr2).toFixed(2);
-                $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                $("#recoveryInference").html(state1 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state2);
+                $("#st1").removeClass("green");
+                $("#st1").addClass("green");
             } else {
                 var diff = (fr2 - fr1).toFixed(2);
-                $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                $("#recoveryInference").html(state2 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state1);
+                $("#st1").removeClass("green");
+                $("#st1").addClass("green");
             }
             if (fd1 > fd2) {
                 var diff = (fd1 - fd2).toFixed(2);
-                $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                $("#deathInference").html(state2 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state1);
+                $("#st2").removeClass("green");
+                $("#st2").addClass("green");
             } else {
                 var diff = (fd2 - fd1).toFixed(2);
-                $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                $("#deathInference").html(state1 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state2);
+                $("#st2").removeClass("green");
+                $("#st2").addClass("green");
             }
 
             setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', state1, state2);
@@ -155,17 +164,25 @@ function myFunction(arr) {
 
                 if (fr1 > fr2) {
                     var diff = (fr1 - fr2).toFixed(2);
-                    $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                    $("#recoveryInference").html(state1 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state2);
+                    $("#st1").removeClass("green");
+                    $("#st1").addClass("green");
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
-                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                    $("#recoveryInference").html(state2 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state1);
+                    $("#st1").removeClass("green");
+                    $("#st1").addClass("green");
                 }
                 if (fd1 > fd2) {
                     var diff = (fd1 - fd2).toFixed(2);
-                    $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                    $("#deathInference").html(state2 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state1);
+                    $("#st2").removeClass("green");
+                    $("#st2").addClass("green");
                 } else {
                     var diff = (fd2 - fd1).toFixed(2);
-                    $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                    $("#deathInference").html(state1 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state2);
+                    $("#st2").removeClass("green");
+                    $("#st2").addClass("green");
                 }
 
                 setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', state1, state2);
@@ -188,17 +205,25 @@ function myFunction(arr) {
 
                 if (fr1 > fr2) {
                     var diff = (fr1 - fr2).toFixed(2);
-                    $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                    $("#recoveryInference").html(state1 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state2);
+                    $("#st1").removeClass("green");
+                    $("#st1").addClass("green");
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
-                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                    $("#recoveryInference").html(state2 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state1);
+                    $("#st1").removeClass("green");
+                    $("#st1").addClass("green");
                 }
                 if (fd1 > fd2) {
                     var diff = (fd1 - fd2).toFixed(2);
-                    $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                    $("#deathInference").html(state2 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state1);
+                    $("#st2").removeClass("green");
+                    $("#st2").addClass("green");
                 } else {
                     var diff = (fd2 - fd1).toFixed(2);
-                    $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                    $("#deathInference").html(state1 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state2);
+                    $("#st2").removeClass("green");
+                    $("#st2").addClass("green");
                 }
 
                 setParameters(ttc, ttr, ttd, tta, rr1, dr1, '1', 'state', 'state');
@@ -233,17 +258,25 @@ function myFunction(arr) {
 
                 if (fr1 > fr2) {
                     var diff = (fr1 - fr2).toFixed(2);
-                    $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                    $("#recoveryInference").html(state1 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state2);
+                    $("#st1").removeClass("green");
+                    $("#st1").addClass("green");
                 } else {
                     var diff = (fr2 - fr1).toFixed(2);
-                    $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                    $("#recoveryInference").html(state2 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state1);
+                    $("#st1").removeClass("green");
+                    $("#st1").addClass("green");
                 }
                 if (fd1 > fd2) {
                     var diff = (fd1 - fd2).toFixed(2);
-                    $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                    $("#deathInference").html(state2 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state1);
+                    $("#st2").removeClass("green");
+                    $("#st2").addClass("green");
                 } else {
                     var diff = (fd2 - fd1).toFixed(2);
-                    $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                    $("#deathInference").html(state1 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state2);
+                    $("#st2").removeClass("green");
+                    $("#st2").addClass("green");
                 }
 
                 setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', state1, state2);
@@ -273,17 +306,25 @@ function myFunction(arr) {
 
                     if (fr1 > fr2) {
                         var diff = (fr1 - fr2).toFixed(2);
-                        $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                        $("#recoveryInference").html(state1 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state2);
+                        $("#st1").removeClass("green");
+                        $("#st1").addClass("green");
                     } else {
                         var diff = (fr2 - fr1).toFixed(2);
-                        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                        $("#recoveryInference").html(state2 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state1);
+                        $("#st1").removeClass("green");
+                        $("#st1").addClass("green");
                     }
                     if (fd1 > fd2) {
                         var diff = (fd1 - fd2).toFixed(2);
-                        $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                        $("#deathInference").html(state2 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state1);
+                        $("#st2").removeClass("green");
+                        $("#st2").addClass("green");
                     } else {
                         var diff = (fd2 - fd1).toFixed(2);
-                        $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                        $("#deathInference").html(state1 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state2);
+                        $("#st2").removeClass("green");
+                        $("#st2").addClass("green");
                     }
 
                     setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', state1, state2);
@@ -307,17 +348,25 @@ function myFunction(arr) {
 
                     if (fr1 > fr2) {
                         var diff = (fr1 - fr2).toFixed(2);
-                        $("#recoveryInference").text(state1 + " has " + diff + "% better recovery rate than " + state2);
+                        $("#recoveryInference").html(state1 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state2);
+                        $("#st1").removeClass("green");
+                        $("#st1").addClass("green");
                     } else {
                         var diff = (fr2 - fr1).toFixed(2);
-                        $("#recoveryInference").text(state2 + " has " + diff + "% better recovery rate than " + state1);
+                        $("#recoveryInference").html(state2 + " has " + "<span id='st1'>" + diff + "% " + upArr + '</span>' + " better recovery rate than " + state1);
+                        $("#st1").removeClass("green");
+                        $("#st1").addClass("green");
                     }
                     if (fd1 > fd2) {
                         var diff = (fd1 - fd2).toFixed(2);
-                        $("#deathInference").text(state2 + " has " + diff + "% lesser death rate than " + state1);
+                        $("#deathInference").html(state2 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state1);
+                        $("#st2").removeClass("green");
+                        $("#st2").addClass("green");
                     } else {
                         var diff = (fd2 - fd1).toFixed(2);
-                        $("#deathInference").text(state1 + " has " + diff + "% lesser death rate than " + state2);
+                        $("#deathInference").html(state1 + " has " + "<span id='st2'>" + diff + "% " + upArr + '</span>' + " lesser death rate than " + state2);
+                        $("#st2").removeClass("green");
+                        $("#st2").addClass("green");
                     }
 
                     setParameters(ttc, ttr, ttd, tta, rr2, dr2, '2', 'state', 'state');
