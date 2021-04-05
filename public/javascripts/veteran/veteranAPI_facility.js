@@ -154,12 +154,10 @@ function facilityGraph(arr) {
 }
 
 function setParameters() {
-    TC = document.querySelector("#country");
     RC = document.querySelector("#state");
     DC = document.querySelector("#city");
     AC = document.querySelector("#condition");
     DR = document.querySelector("#measure");
-    TC.textContent = country;
     RC.textContent = state;
     DC.textContent = city;
     AC.textContent = condition;

@@ -301,13 +301,11 @@ function myFunction(arr) {
 }
 
 function setParameters(offset) {
-    TC = document.querySelector("#country" + offset);
     RC = document.querySelector("#state" + offset);
     DC = document.querySelector("#city" + offset);
     AC = document.querySelector("#condition" + offset);
     DR = document.querySelector("#measure" + offset);
 
-    TC.textContent = country;
     RC.textContent = state;
     DC.textContent = city;
     AC.textContent = condition;
