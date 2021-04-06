@@ -13,8 +13,6 @@ xmlhttp.send();
 var score = [];
 var sample = [];
 var conditionID = [];
-var lowOutliers = [];
-var highOutliers = [];
 var den = 822;
 
 var scoreMap = new Map();
@@ -64,13 +62,19 @@ function populateMaps(score, sample, facilityArr) {
 }
 
 function findScoreOutliers(score) {
+    var lowOutliers = [];
+    var highOutliers = [];
     var sortedScore = score.sort(function (a, b) {
         return a - b;
     });
 
-    var median = (sortedScore[440] + sortedScore[441]) / 2;
-    var l = median - ((1.5) * sortedScore[220]);
-    var r = median + ((1.5) * sortedScore[661]);
+    var median = (sortedScore[411] + sortedScore[412]) / 2;
+    var q1 = sortedScore[205];
+    var q2 = sortedScore[618];
+    var iqr = q2 - q1;
+    var l = median - ((1.5) * iqr);
+    var r = median + ((1.5) * iqr);
+
     var data = [];
     for (var i = 0; i < sortedScore.length; i++) {
         if (sortedScore[i] < l)
@@ -81,9 +85,9 @@ function findScoreOutliers(score) {
             data.push(sortedScore[i]);
     }
     var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
-    var lowOutliersData = [{}];
-    var normalData = [{}];
-    var highOutliersData = [{}];
+    var lowOutliersData = [];
+    var normalData = [];
+    var highOutliersData = [];
     var xi = 1;
     var lowColor = [];
     var highColor = [];
@@ -99,6 +103,8 @@ function findScoreOutliers(score) {
         lowOutliersData.push(temp);
         lowColor.push('rgba(232,168,76,0.3)');
     }
+    lowColor.push('rgba(232,168,76,0.3)');
+
     for (var i = 0; i < data.length; i++) {
         var temp = {
             x: xi,
@@ -109,6 +115,8 @@ function findScoreOutliers(score) {
         normalData.push(temp);
         normalColor.push('rgba(233,236,239,0.753)');
     }
+    normalColor.push('rgba(233,236,239,0.753)');
+
     for (var i = 0; i < highOutliers.length; i++) {
         var temp = {
             x: xi,
@@ -119,17 +127,24 @@ function findScoreOutliers(score) {
         highOutliersData.push(temp);
         highColor.push('rgba(247,46,77,0.3)');
     }
+    highColor.push('rgba(247,46,77,0.3)');
+
     createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, 'bubbleChart', '#scoreOutliersGraph', lowColor, normalColor, highColor);
 }
 
 function findSampleOutliers(sample) {
+    var lowOutliers = [];
+    var highOutliers = [];
     var sortedSample = sample.sort(function (a, b) {
         return a - b;
     });
 
-    var median = (sortedSample[440] + sortedSample[441]) / 2;
-    var l = median - ((1.5) * sortedSample[220]);
-    var r = median + ((1.5) * sortedSample[661]);
+    var median = (sortedSample[411] + sortedSample[412]) / 2;
+    var q1 = sortedSample[205];
+    var q2 = sortedSample[618];
+    var iqr = q2 - q1;
+    var l = median - ((1.5) * iqr);
+    var r = median + ((1.5) * iqr);
     var data = [];
     for (var i = 0; i < sortedSample.length; i++) {
         if (sortedSample[i] < l)
@@ -140,9 +155,9 @@ function findSampleOutliers(sample) {
             data.push(sortedSample[i]);
     }
     var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
-    var lowOutliersData = [{}];
-    var normalData = [{}];
-    var highOutliersData = [{}];
+    var lowOutliersData = [];
+    var normalData = [];
+    var highOutliersData = [];
     var xi = 1;
     var lowColor = [];
     var highColor = [];
@@ -158,6 +173,8 @@ function findSampleOutliers(sample) {
         lowOutliersData.push(temp);
         lowColor.push('rgba(232,168,76,0.3)');
     }
+    lowColor.push('rgba(232,168,76,0.3)');
+
     for (var i = 0; i < data.length; i++) {
         var temp = {
             x: xi,
@@ -168,6 +185,8 @@ function findSampleOutliers(sample) {
         normalData.push(temp);
         normalColor.push('rgba(233,236,239,0.753)');
     }
+    normalColor.push('rgba(233,236,239,0.753)');
+
     for (var i = 0; i < highOutliers.length; i++) {
         var temp = {
             x: xi,
@@ -178,6 +197,9 @@ function findSampleOutliers(sample) {
         highOutliersData.push(temp);
         highColor.push('rgba(247,46,77,0.3)');
     }
+    highColor.push('rgba(247,46,77,0.3)');
+
+    // console.log(normalData.length + lowOutliers.length + highOutliers.length);
     createBubbleGraph(normalData, lowOutliersData, highOutliersData, label, 'BbubbleChart', '#sampleOutliersGraph', lowColor, normalColor, highColor);
 }
 
