@@ -84,6 +84,7 @@ function findRROutliers(recoveryRate) {
         lowOutliersData.push(temp);
         lowColor.push('rgba(232,168,76,0.3)');
     }
+    lowColor.push('rgba(232,168,76,0.3)');
     for (var i = 0; i < data.length; i++) {
         var temp = {
             x: xi,
@@ -94,6 +95,8 @@ function findRROutliers(recoveryRate) {
         normalData.push(temp);
         normalColor.push('rgba(233,236,239,0.753)');
     }
+    normalColor.push('rgba(233,236,239,0.753)');
+
     for (var i = 0; i < highOutliers.length; i++) {
         var temp = {
             x: xi,
@@ -168,6 +171,8 @@ function findDROutliers(deathRate) {
         normalData.push(temp);
         normalColor.push('rgba(233,236,239,0.753)');
     }
+    normalColor.push('rgba(233,236,239,0.753)');
+
     for (var i = 0; i < highOutliers.length; i++) {
         var temp = {
             x: xi,
