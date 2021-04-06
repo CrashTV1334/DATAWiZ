@@ -19,7 +19,7 @@ var conditionID = [];
 
 function myFunction(arr) {
     var stateArr = arr.statewise;
-    for (var i = 0; i < stateArr.length - 1; i++) {
+    for (var i = 1; i < stateArr.length - 1; i++) {
         var tc = stateArr[i].confirmed;
         var tr = stateArr[i].recovered;
         var td = stateArr[i].deaths;
@@ -43,16 +43,19 @@ function findRROutliers(recoveryRate) {
     var sortedRecoveryRate1 = recoveryRate1.sort(function (a, b) {
         return a - b;
     });
-    var median = (sortedRecoveryRate[18]);
-    var q1 = ((sortedRecoveryRate[3]) + (sortedRecoveryRate[4])) / 2;
-    var q2 = ((sortedRecoveryRate[12]) + (sortedRecoveryRate[13])) / 2;
+
+    var median = (sortedRecoveryRate[17] + sortedRecoveryRate[18]) / 2;
+    // var q1 = ((sortedRecoveryRate[3]) + (sortedRecoveryRate[4])) / 2;
+    // var q2 = ((sortedRecoveryRate[12]) + (sortedRecoveryRate[13])) / 2;
+    var q1 = sortedRecoveryRate[9];
+    var q2 = sortedRecoveryRate[26];
     var iqr = q2 - q1;
     var l = parseInt(median - ((1.5) * iqr));
     var r = parseInt(median + ((1.5) * iqr));
     var lowOutliers = [];
     var highOutliers = [];
     var data = [];
-    for (var i = 0; i < 37; i++) {
+    for (var i = 0; i < 36; i++) {
 
         if (parseInt(sortedRecoveryRate[i]) < l) {
             lowOutliers.push(sortedRecoveryRate1[i]);
@@ -112,10 +115,11 @@ function findDROutliers(deathRate) {
         return a - b;
     });
 
-
-    var median = (sortedDeathRate[18]);
-    var q1 = ((sortedDeathRate[3]) + (sortedDeathRate[4])) / 2;
-    var q2 = ((sortedDeathRate[12]) + (sortedDeathRate[13])) / 2;
+    var median = (sortedDeathRate[17] + sortedDeathRate[18]) / 2;
+    // var q1 = ((sortedDeathRate[3]) + (sortedDeathRate[4])) / 2;
+    // var q2 = ((sortedDeathRate[12]) + (sortedDeathRate[13])) / 2;
+    var q1 = sortedDeathRate[9];
+    var q2 = sortedDeathRate[26];
     var iqr = q2 - q1;
     var l = parseInt(median - ((1.5) * iqr));
     var r = parseInt(median + ((1.5) * iqr));
