@@ -1,18 +1,3 @@
-var xmlhttp = new XMLHttpRequest();
-var url = "https://data.medicare.gov/api/views/6qxe-iqz8/rows.json?accessType=DOWNLOAD";
-
-var downArr = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" /></svg>';
-var upArr = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>';
-
-xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        facilityGraph(myArr);
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-
 var country, state, city, condition, measure, samples, score;
 var avgScr = 40;
 var avgSam = 1878;
@@ -20,26 +5,33 @@ var avgSam = 1878;
 var facilityMap = new Map();
 facilityMap.set("--Select--", -1);
 
+var downArr = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" /></svg>';
+var upArr = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>';
+
+$.getJSON("/javascripts/veteran/veteran-dataset.json", function (myArr) {
+    facilityGraph(myArr);
+});
+
 function facilityGraph(arr) {
     var facilitySel = document.querySelector("#facilitySel");
     facilitySel.length = 1;
-    var facilityArr = arr.data;
+    var facilityArr = arr;
     for (var i = 1; i < facilityArr.length; i++) {
-        facilitySel.options[facilitySel.options.length] = new Option(facilityArr[i][9], facilityArr[i][9]);
-        facilityMap.set(facilityArr[i][9], i);
+        facilitySel.options[facilitySel.options.length] = new Option(facilityArr[i]["Facility Name"], facilityArr[i]["Facility Name"]);
+        facilityMap.set(facilityArr[i]["Facility Name"], i);
     }
 
     facilitySel.onchange = function () {
         var selected_facility = document.querySelector("#facilitySel").value;
         var indx = facilityMap.get(selected_facility);
         try {
-            var cont = facilityArr[indx][14]; // country
-            var st = facilityArr[indx][12]; // state
-            var cit = facilityArr[indx][11]; // city
-            var cond = facilityArr[indx][16]; //condtion
-            var mes = facilityArr[indx][18]; //measure
-            var sam = facilityArr[indx][20]; //samples 
-            var sc = facilityArr[indx][19]; //score
+            var cont = facilityArr[indx]["County Name"]; // country
+            var st = facilityArr[indx]["State"]; // state
+            var cit = facilityArr[indx]["City"]; // city
+            var cond = facilityArr[indx]["Condition"]; //condtion
+            var mes = facilityArr[indx]["Measure Name"]; //measure
+            var sam = facilityArr[indx]["Sample"]; //samples 
+            var sc = facilityArr[indx]["Score"]; //score
             country = cont;
             state = st;
             city = cit;
@@ -75,13 +67,13 @@ function facilityGraph(arr) {
 
         } catch (error) {
             try {
-                var cont = facilityArr[0][14]; // country
-                var st = facilityArr[0][12]; // state
-                var cit = facilityArr[0][11]; // city
-                var cond = facilityArr[0][16]; //condtion
-                var mes = facilityArr[0][18]; //measure
-                var sam = facilityArr[0][20]; //samples 
-                var sc = facilityArr[0][19]; //score
+                var cont = facilityArr[0]["County Name"]; // country
+                var st = facilityArr[0]["State"]; // state
+                var cit = facilityArr[0]["City"]; // city
+                var cond = facilityArr[0]["Condition"]; //condtion
+                var mes = facilityArr[0]["Measure Name"]; //measure
+                var sam = facilityArr[0]["Sample"]; //samples 
+                var sc = facilityArr[0]["Score"]; //score
                 country = cont;
                 state = st;
                 city = cit;

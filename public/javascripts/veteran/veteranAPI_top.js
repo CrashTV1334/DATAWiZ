@@ -1,14 +1,6 @@
-var xmlhttp = new XMLHttpRequest();
-var url = "https://data.medicare.gov/api/views/6qxe-iqz8/rows.json?accessType=DOWNLOAD";
-
-xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        worldGraph(myArr);
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+$.getJSON("/javascripts/veteran/veteran-dataset.json", function (myArr) {
+    worldGraph(myArr);
+});
 
 // var st = facilityArr[indx][12]; // state
 // var sam = facilityArr[indx][20]; //samples 
@@ -19,14 +11,13 @@ var facilityMap = new Map();
 facilityMap.set("--Select--", -1);
 
 function worldGraph(arr) {
-    var facilityArr = arr.data;
+    var facilityArr = arr;
 
     var facilitySel = document.querySelector("#facilitySel");
     facilitySel.length = 1;
-    var facilityArr = arr.data;
     var stateList = [];
     for (var i = 1; i < facilityArr.length; i++) {
-        stateList.push(facilityArr[i][12]);
+        stateList.push(facilityArr[i]["State"]);
     }
     stateList = stateList.filter((v, i, a) => a.indexOf(v) === i)
 
@@ -63,10 +54,10 @@ function calculate(facilityArr, st) {
     var sampleData = [];
 
     for (var i = 1; i < facilityArr.length; i++) {
-        if (facilityArr[i][12] == st) {
-            var nm = facilityArr[i][9] + " - " + facilityArr[i][14] + "(" + facilityArr[i][17] + ")";
-            var sc1 = parseInt(facilityArr[i][19]);
-            var sm1 = parseInt(facilityArr[i][20]);
+        if (facilityArr[i]["State"] == st) {
+            var nm = facilityArr[i]["Facility Name"] + " - " + facilityArr[i]["City"] + "(" + facilityArr[i]["Measure ID"] + ")";
+            var sc1 = parseInt(facilityArr[i]["Score"]);
+            var sm1 = parseInt(facilityArr[i]["Sample"]);
             if (Number.isNaN(sc1)) {
                 sc1 = 0;
             }

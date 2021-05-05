@@ -1,15 +1,3 @@
-var xmlhttp = new XMLHttpRequest();
-var url = "https://data.medicare.gov/api/views/6qxe-iqz8/rows.json?accessType=DOWNLOAD";
-
-xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        myFunction(myArr);
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-
 var score = [];
 var sample = [];
 var conditionID = [];
@@ -18,19 +6,23 @@ var den = 822;
 var scoreMap = new Map();
 var conditionMap = new Map();
 
+$.getJSON("/javascripts/veteran/veteran-dataset.json", function (myArr) {
+    myFunction(myArr);
+});
+
 function myFunction(arr) {
-    var facilityArr = arr.data;
+    var facilityArr = arr;
 
     for (var i = 0; i < facilityArr.length; i++) {
-        conditionID.push(facilityArr[i][17]); // condtion ID
-        if (facilityArr[i][19] == 'Not Available')
+        conditionID.push(facilityArr[i]["Measure ID"]); // condtion ID
+        if (facilityArr[i]["Score"] == 'Not Available')
             score.push(0);
         else
-            score.push(parseInt(facilityArr[i][19])); //score
-        if (facilityArr[i][20] == 'Not Available')
+            score.push(parseInt(facilityArr[i]["Score"])); //score
+        if (facilityArr[i]["Sample"] == 'Not Available')
             sample.push(0);
         else
-            sample.push(parseInt(facilityArr[i][20]));
+            sample.push(parseInt(facilityArr[i]["Sample"]));
     }
     var uniqueScore = score.filter((v, i, a) => a.indexOf(v) === i);
     var uniqueConditionID = conditionID.filter((v, i, a) => a.indexOf(v) === i);
@@ -49,7 +41,7 @@ function myFunction(arr) {
 
 function populateMaps(score, sample, facilityArr) {
     for (var i = 1; i < facilityArr.length; i++) {
-        var con = facilityArr[i][17];
+        var con = facilityArr[i]["Measure ID"];
         var sam = conditionMap.get(con);
 
         if (sample[i] != undefined)
