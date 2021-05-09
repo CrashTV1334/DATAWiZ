@@ -85,6 +85,9 @@ function findScoreOutliers(score) {
     var highColor = [];
     var normalColor = [];
 
+    $('#lo_sc').text(lowOutliers.length);
+    $('#hi_sc').text(highOutliers.length);
+
     for (var i = 0; i < lowOutliers.length; i++) {
         var temp = {
             x: xi,
@@ -154,6 +157,9 @@ function findSampleOutliers(sample) {
     var lowColor = [];
     var highColor = [];
     var normalColor = [];
+
+    $('#lo_sm').text(lowOutliers.length);
+    $('#hi_sm').text(highOutliers.length);
 
     for (var i = 0; i < lowOutliers.length; i++) {
         var temp = {

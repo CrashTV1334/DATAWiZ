@@ -15,7 +15,10 @@ var recoveryRate1 = [];
 var deathRate = [];
 var deathRate1 = [];
 var conditionID = [];
-
+var low_DR = 0;
+var high_DR = 0;
+var low_RR = 0;
+var high_RR = 0;
 
 function myFunction(arr) {
     var stateArr = arr.statewise;
@@ -45,8 +48,6 @@ function findRROutliers(recoveryRate) {
     });
 
     var median = (sortedRecoveryRate[17] + sortedRecoveryRate[18]) / 2;
-    // var q1 = ((sortedRecoveryRate[3]) + (sortedRecoveryRate[4])) / 2;
-    // var q2 = ((sortedRecoveryRate[12]) + (sortedRecoveryRate[13])) / 2;
     var q1 = sortedRecoveryRate[9];
     var q2 = sortedRecoveryRate[26];
     var iqr = q2 - q1;
@@ -73,6 +74,10 @@ function findRROutliers(recoveryRate) {
     var lowColor = [];
     var highColor = [];
     var normalColor = [];
+    low_RR = lowOutliers.length;
+    high_RR = highOutliers.length;
+    $('#lo_RR').text(low_RR);
+    $('#hi_RR').text(high_RR);
 
     for (var i = 0; i < lowOutliers.length; i++) {
         var temp = {
@@ -119,8 +124,6 @@ function findDROutliers(deathRate) {
     });
 
     var median = (sortedDeathRate[17] + sortedDeathRate[18]) / 2;
-    // var q1 = ((sortedDeathRate[3]) + (sortedDeathRate[4])) / 2;
-    // var q2 = ((sortedDeathRate[12]) + (sortedDeathRate[13])) / 2;
     var q1 = sortedDeathRate[9];
     var q2 = sortedDeathRate[26];
     var iqr = q2 - q1;
@@ -140,8 +143,7 @@ function findDROutliers(deathRate) {
         } else if (parseInt(sortedDeathRate[i]) >= l && parseInt(sortedDeathRate[i]) <= r)
             data.push(sortedDeathRate1[i]);
     }
-    // console.log(lowOutliers);
-    // console.log(highOutliers);
+
     var label = ['Low Outliers', 'Normal Data', 'High Outliers'];
     var lowOutliersData = [{}];
     var normalData = [{}];
@@ -150,6 +152,11 @@ function findDROutliers(deathRate) {
     var lowColor = [];
     var highColor = [];
     var normalColor = [];
+    low_DR = lowOutliers.length;
+    high_DR = highOutliers.length;
+
+    $('#lo_DR').text(low_DR);
+    $('#hi_DR').text(high_DR);
 
     for (var i = 0; i < lowOutliers.length; i++) {
         var temp = {
