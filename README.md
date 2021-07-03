@@ -1,7 +1,7 @@
 # DataWiz
 "DataWiz" is wesite to interpret the trends in dataset, compare the data across the facilities and also enabling us to find the outliers in the data.
 
-[visit our site here](https://data-wiz-context-visualizer.herokuapp.com/)<br/>
+[Link to the website](https://data-wiz-context-visualizer.herokuapp.com/)<br/>
 
 <img src="https://github.com/CrashTV1334/DATAWiZ/blob/master/public/logo.png" width="100%" />
 
